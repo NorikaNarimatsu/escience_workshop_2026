@@ -24,13 +24,13 @@ csv_writer=csv.writer(output_file)
 time = []
 date =[]
 
-index=0
-for record in data:
-    # print(data[index])
+j=0
+for i in data:
+    # print(data[j])
     # and this bit
-    csv_writer.writerow(data[index].values())
-    if 'duration' in data[index].keys():
-        duration_str=data[index]['duration']
+    csv_writer.writerow(data[j].values())
+    if 'duration' in data[j].keys():
+        duration_str=data[j]['duration']
         if duration_str == '':
             pass
         else:
@@ -38,13 +38,13 @@ for record in data:
             hours_decimal = dt.timedelta(hours=time_obj.hour, minutes=time_obj.minute, seconds=time_obj.second).total_seconds()/(60*60)
             print(time_obj,hours_decimal)
             time.append(hours_decimal)
-            if 'date' in data[index].keys():
-                date.append(dt.datetime.strptime(data[index]['date'][0:10], '%Y-%m-%d'))
+            if 'date' in data[j].keys():
+                date.append(dt.datetime.strptime(data[j]['date'][0:10], '%Y-%m-%d'))
                 #date.append(data[j]['date'][0:10])
 
             else:
                 time.pop(0)
-    index+=1
+    j+=1
 
 cumulative_time=[0]
 for duration in time:
