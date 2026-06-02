@@ -5,22 +5,18 @@ import csv
 import datetime as dt
 import matplotlib.pyplot as plt
 
-
 input_file = open('eva-data.json', 'r')
 output_file = open('eva_data_analysis.csv','w')
 graph_file = 'cumulative_eva_graph.png'
 
-fieldnames = ("EVA #", "Country", "Crew    ", "Vehicle", "Date", "Duration", "Purpose")
+# fieldnames = ("EVA #", "Country", "Crew    ", "Vehicle", "Date", "Duration", "Purpose")
 
 data=[]
 
 for i in range(375):
     line=input_file.readline()
-    print(line)
+    # print(line) 
     data.append(json.loads(line[1:-1]))
-
-#data.pop(0)
-## Comment out this bit if you don't want the spreadsheet
 
 csv_writer=csv.writer(output_file)
 
@@ -30,7 +26,7 @@ date =[]
 
 index=0
 for record in data:
-    print(data[index])
+    # print(data[index])
     # and this bit
     csv_writer.writerow(data[index].values())
     if 'duration' in data[index].keys():
